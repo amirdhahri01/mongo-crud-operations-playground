@@ -7,13 +7,27 @@ configDotenv();
 const app = express();
 app.use(express.json());
 const ProductRoutes = express.Router();
-ProductRoutes.post("" ,  asyncHandler(async(req , res)=>{
+ProductRoutes.route("").post(asyncHandler(async(req , res)=>{
     const {name , quantity , price , image} = req.body;
     const product = await Product.create({name , quantity , price , image});
     res.status(201).json({message : "Product Created Successfully" , data:{product}})
-})).get("" , asyncHandler(async (req , res) => {
+})).get(asyncHandler(async (req , res) => {
     const products = await Product.find();
     res.status(200).json({message : "Products Fetched Successfully" , data:{products}})
+}))
+ProductRoutes.route("/:id").get(asyncHandler( async (req , res) => {
+    const {id} = req.params;
+    const product = await Product.findById(id);
+    res.status(200).json({message : "Product Fetched Successfully" , data:{product}})
+})).put(asyncHandler(async (req , res) => {
+    const {name , quantity , price , image} = req.body;
+    const {id} = req.params;
+    const product = await Product.findByIdAndUpdate(id , {name , quantity , price , image} , {new : true});
+    res.status(200).json({message : "Product Updated Successfully" , data:{product}})
+})).delete(asyncHandler(async (req , res) => {
+    const {id} = req.params;
+    const product = await Product.findByIdAndDelete(id);
+    res.status(200).json({message : "Product Deleted Successfully" , data:{product}});
 }))
 app.use("/api/products" , ProductRoutes)
 app.use((req , res , next) => {

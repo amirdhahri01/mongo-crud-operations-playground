@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Node-API",
     "collectionId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
-    "dateExported": "2024-12-04T14:45:58.851Z",
+    "dateExported": "2024-12-04T15:18:32.890Z",
     "version": "1.2",
     "folders": [
         {
@@ -23,14 +23,67 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-12-04T14:43:23.169Z",
-            "modified": "2024-12-04T14:43:38.441Z",
+            "modified": "2024-12-04T15:15:24.435Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Shoe\",\n  \"quantity\" : 20,\n  \"price\" : 20,\n  \"image\" : \"/imgs/shoe.png\"\n}",
+                "raw": "{\n  \"name\" : \"Shoe\",\n  \"quantity\" : 20,\n  \"price\" : 20,\n  \"image\" : \"/imgs/shoe.png\"\n}",
                 "form": []
             }
+        },
+        {
+            "_id": "eb46e3f8-bbc5-4ec3-b6f3-857760f0fefd",
+            "colId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+            "containerId": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Fetch Products",
+            "url": "http://localhost:3000/api/products",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-12-04T14:48:06.234Z",
+            "modified": "2024-12-04T15:10:40.023Z",
+            "headers": []
+        },
+        {
+            "_id": "bd59e1d3-f7b4-4f34-9675-04be52fa53c5",
+            "colId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+            "containerId": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Fetch Product",
+            "url": "http://localhost:3000/api/products/67506c555de58c16c0d373d6",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-12-04T15:10:28.626Z",
+            "modified": "2024-12-04T15:10:58.122Z",
+            "headers": []
+        },
+        {
+            "_id": "a717fb74-340c-44a9-9188-6d37a9ffbbc9",
+            "colId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+            "containerId": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Update Product",
+            "url": "http://localhost:3000/api/products/67506c555de58c16c0d373d6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-12-04T15:15:02.902Z",
+            "modified": "2024-12-04T15:15:31.103Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\" : \"Shoe\",\n  \"quantity\" : 20,\n  \"price\" : 20,\n  \"image\" : \"/imgs/shoe.png\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d0bcf9f3-e9cd-4ab5-b7ed-07360dc1c41a",
+            "colId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+            "containerId": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Delete Product",
+            "url": "http://localhost:3000/api/products/67506c555de58c16c0d373d6",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-12-04T15:16:42.640Z",
+            "modified": "2024-12-04T15:16:48.995Z",
+            "headers": []
         }
     ],
-    "ref": "M0FZEwWbHKg1H0VH5SeWEmZbdgqrnIU08i4TozD9CjPKte7-TVfN-2cXAlsBeOiwvJA2BRgWmTKuPt78tSWa9A"
+    "ref": "M0FZEwWbHKg1H0VH5SeWElP4BhlLjoAKrpYTX8YMO4mc2edQMjN6QZoufBHYXrYrquZZph9HD-32Lp1Mogw4Cw"
 }
