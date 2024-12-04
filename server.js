@@ -7,18 +7,27 @@ configDotenv();
 const app = express();
 app.use(express.json());
 const ProductRoutes = express.Router();
-ProductRoutes.post("" , new asyncHandler(async(req , res)=>{
+ProductRoutes.post("" ,  asyncHandler(async(req , res)=>{
     const {name , quantity , price , image} = req.body;
     const product = await Product.create({name , quantity , price , image});
     res.status(201).json({message : "Product Created Successfully" , data:{product}})
-})).get("" , async (req , res) => {
+})).get("" , asyncHandler(async (req , res) => {
     const products = await Product.find();
     res.status(200).json({message : "Products Fetched Successfully" , data:{products}})
-})
+}))
 app.use("/api/products" , ProductRoutes)
-app.use((req , res ,err) => {
-    res.status(500).json({message : err.message})
+app.use((req , res , next) => {
+    const err = new Error(`Can't find ${req.originalUrl} on the server`);
+    next(err);
 })
+app.use((err , req , res ,next) => {
+    const stack = err.stack;
+    const message = err.message;
+    const status = err.status ? err.status : "Failed";
+    const statusCode = err.statusCode ? err.statusCode : 500;
+    res.status(statusCode).json({status , message ,stack})
+}) 
+
 mongoose.connect(process.env.MONGO_URL_CONNECTION)
 .then(() => {
     console.log("Connected to database!");
