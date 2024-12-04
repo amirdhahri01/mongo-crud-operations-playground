@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 //Routes
-app.use("/api/projcets", ProductRoutes);
+app.use("/api/products", ProductRoutes);
 //Error Handling
 app.use(notFoundHandling)
 app.use(errorHandling)
