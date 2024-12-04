@@ -1,54 +1,13 @@
-import express from "express";
-import mongoose from "mongoose";
-import asyncHandler from "express-async-handler"
+import http from "http"
 import { configDotenv } from "dotenv";
-import Product from "./models/product.model.js";
-configDotenv();
-const app = express();
-app.use(express.json());
-const ProductRoutes = express.Router();
-ProductRoutes.route("").post(asyncHandler(async(req , res)=>{
-    const {name , quantity , price , image} = req.body;
-    const product = await Product.create({name , quantity , price , image});
-    res.status(201).json({message : "Product Created Successfully" , data:{product}})
-})).get(asyncHandler(async (req , res) => {
-    const products = await Product.find();
-    res.status(200).json({message : "Products Fetched Successfully" , data:{products}})
-}))
-ProductRoutes.route("/:id").get(asyncHandler( async (req , res) => {
-    const {id} = req.params;
-    const product = await Product.findById(id);
-    res.status(200).json({message : "Product Fetched Successfully" , data:{product}})
-})).put(asyncHandler(async (req , res) => {
-    const {name , quantity , price , image} = req.body;
-    const {id} = req.params;
-    const product = await Product.findByIdAndUpdate(id , {name , quantity , price , image} , {new : true});
-    res.status(200).json({message : "Product Updated Successfully" , data:{product}})
-})).delete(asyncHandler(async (req , res) => {
-    const {id} = req.params;
-    const product = await Product.findByIdAndDelete(id);
-    res.status(200).json({message : "Product Deleted Successfully" , data:{product}});
-}))
-app.use("/api/products" , ProductRoutes)
-app.use((req , res , next) => {
-    const err = new Error(`Can't find ${req.originalUrl} on the server`);
-    next(err);
-})
-app.use((err , req , res ,next) => {
-    const stack = err.stack;
-    const message = err.message;
-    const status = err.status ? err.status : "Failed";
-    const statusCode = err.statusCode ? err.statusCode : 500;
-    res.status(statusCode).json({status , message ,stack})
-}) 
+import app from "./App/app.js";
+import dbConnect from "./config/dbConnect.js";
+configDotenv()
 
-mongoose.connect(process.env.MONGO_URL_CONNECTION)
-.then(() => {
-    console.log("Connected to database!");
-    app.listen(3000 , () => {
-        console.log("Server is running on port 3000");
-    })
+const PORT = process.env.PORT || 2020;
+
+http.createServer(app).listen(PORT , () => {
+    console.log(`The serve is running on port ${PORT}`);
 })
-.catch(() => {
-    console.log("Connection Failed !");
-})
+
+dbConnect();
