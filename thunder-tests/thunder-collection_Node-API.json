@@ -1,0 +1,36 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Node-API",
+    "collectionId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+    "dateExported": "2024-12-04T14:45:58.851Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Products",
+            "containerId": "",
+            "created": "2024-12-04T14:44:39.766Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5d3f6403-073c-43a2-afbc-55a62e8b8396",
+            "colId": "f495a7e4-19a3-4855-b8da-c1f092fa71aa",
+            "containerId": "1921d6d7-e6d4-4003-bc69-9cb007ca2dc0",
+            "name": "Create Product",
+            "url": "http://localhost:3000/api/products",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-12-04T14:43:23.169Z",
+            "modified": "2024-12-04T14:43:38.441Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Shoe\",\n  \"quantity\" : 20,\n  \"price\" : 20,\n  \"image\" : \"/imgs/shoe.png\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "M0FZEwWbHKg1H0VH5SeWEmZbdgqrnIU08i4TozD9CjPKte7-TVfN-2cXAlsBeOiwvJA2BRgWmTKuPt78tSWa9A"
+}

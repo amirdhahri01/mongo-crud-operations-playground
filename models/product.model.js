@@ -18,7 +18,7 @@ const ProductSchema = new Schema({
         default: 0
     },
     image: {
-        type: String,
+        type: String, 
         required: true
     }
 }, { timestamps: true })
